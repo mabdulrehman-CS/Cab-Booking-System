@@ -146,32 +146,40 @@ public class BookingCab implements Booking, ActionListener {
 
     @Override
     public void login() {
-        /*System.out.print("Enter userName: ");
-        setUserName(sc.nextLine());
-        System.out.print("Enter Password: ");
-        setPassword(sc.nextLine());*/
-        frame[0]=new JFrame("Registered");
-        frame[0].setSize(320,300);
-        frame[0].setVisible(true);
-        panel[0]=new JPanel(null);
-        label[0]=new JLabel("UserName");
-        label[0].setBounds(20,30,100,30);
-        label[1]=new JLabel("Password");
-        label[1].setBounds(20,80,100,30);
-        jtf[0]=new JTextField();
-        jtf[0].setBounds(150,30,120,30);
+        frame[0] = new JFrame("Customer Login");
+        frame[0].setSize(400, 400);
+        frame[0].setLocationRelativeTo(null);
+        frame[0].setResizable(false);
+        
+        panel[0] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🔐 CUSTOMER LOGIN", 400);
+        headerPanel.setBounds(0, 0, 400, 70);
+        panel[0].add(headerPanel);
+        
+        // Icon
+        JLabel iconLabel = UIStyle.createIconLabel("🔑", 40);
+        iconLabel.setBounds(0, 75, 400, 50);
+        panel[0].add(iconLabel);
+        
+        label[0] = UIStyle.createLabel("Username", UIStyle.LIGHT);
+        label[0].setBounds(50, 140, 100, 30);
+        label[1] = UIStyle.createLabel("Password", UIStyle.LIGHT);
+        label[1].setBounds(50, 210, 100, 30);
+        
+        jtf[0] = UIStyle.createTextField();
+        jtf[0].setBounds(50, 170, 300, 35);
         jtf[0].setActionCommand("User");
         jtf[0].addActionListener(this);
 
-
-        jtf[1]=new JTextField();
-        jtf[1].setBounds(150,80,120,30);
+        jtf[1] = UIStyle.createTextField();
+        jtf[1].setBounds(50, 240, 300, 35);
         jtf[1].setActionCommand("Pass");
         jtf[1].addActionListener(this);
 
-
-        button[0]=new JButton("Submit");
-        button[0].setBounds(180,150,90,40);
+        button[0] = UIStyle.createSuccessButton("🚀  LOGIN");
+        button[0].setBounds(100, 310, 200, 45);
         button[0].setActionCommand("Sub");
         button[0].addActionListener(this);
 
@@ -181,6 +189,7 @@ public class BookingCab implements Booking, ActionListener {
         panel[0].add(jtf[1]);
         panel[0].add(button[0]);
         frame[0].add(panel[0]);
+        frame[0].setVisible(true);
     }
     @Override
     public boolean verify() {
@@ -210,85 +219,84 @@ public class BookingCab implements Booking, ActionListener {
             }
         }
         if(p==1){
-            JOptionPane.showMessageDialog(null,"Successfully Login","SUCCESS",JOptionPane.INFORMATION_MESSAGE);
+            UIStyle.showStyledMessage(null, "Login Successful!", "SUCCESS", JOptionPane.INFORMATION_MESSAGE);
             return true;
         }
         else {
-
             return false;
         }
     }
     @Override
     public void Book(){
-        frame[1]=new JFrame("Book Cab");
-        panel[1]=new JPanel(null);
-        frame[1].setVisible(true);
-        frame[1].setSize(500,350);
-        label[2]=new JLabel("Location");
-        label[2].setBounds(20,20,120,30);
-        jtf[2]=new JTextField();
-        jtf[2].setBounds(160,20,130,30);
+        frame[1] = new JFrame("Book Your Cab");
+        frame[1].setSize(450, 450);
+        frame[1].setLocationRelativeTo(null);
+        frame[1].setResizable(false);
+        
+        panel[1] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🚕 BOOK A RIDE", 450);
+        headerPanel.setBounds(0, 0, 450, 70);
+        panel[1].add(headerPanel);
+        
+        label[2] = UIStyle.createLabel("Pickup Location", UIStyle.LIGHT);
+        label[2].setBounds(30, 90, 120, 30);
+        jtf[2] = UIStyle.createTextField();
+        jtf[2].setBounds(160, 90, 250, 35);
         jtf[2].addActionListener(this);
         jtf[2].setActionCommand("Location");
-        //action
 
-        label[3]=new JLabel("Type");
-        label[3].setBounds(20,70,120,30);
-        jCheckBox[0]=new JCheckBox("Car");
-        jCheckBox[1]=new JCheckBox("Bike");
-        jCheckBox[2]=new JCheckBox("Rickshaw");
-        ButtonGroup bg=new ButtonGroup();
+        label[3] = UIStyle.createLabel("Vehicle Type", UIStyle.LIGHT);
+        label[3].setBounds(30, 145, 120, 30);
+        jCheckBox[0] = UIStyle.createCheckBox("🚗 Car");
+        jCheckBox[1] = UIStyle.createCheckBox("🏍️ Bike");
+        jCheckBox[2] = UIStyle.createCheckBox("🛺 Rickshaw");
+        ButtonGroup bg = new ButtonGroup();
         bg.add(jCheckBox[0]);
         bg.add(jCheckBox[1]);
         bg.add(jCheckBox[2]);
-        jCheckBox[0].setBounds(160,70,60,30);
-        jCheckBox[1].setBounds(220,70,60,30);
-        jCheckBox[2].setBounds(280,70,100,30);
+        jCheckBox[0].setBounds(160, 145, 80, 30);
+        jCheckBox[1].setBounds(245, 145, 80, 30);
+        jCheckBox[2].setBounds(325, 145, 110, 30);
         jCheckBox[0].setActionCommand("Car");
         jCheckBox[1].setActionCommand("Bike");
         jCheckBox[2].setActionCommand("Rickshaw");
         jCheckBox[0].addActionListener(this);
         jCheckBox[1].addActionListener(this);
         jCheckBox[2].addActionListener(this);
-        //action
 
-        label[4]=new JLabel("Quality");
-        jCheckBox[3]=new JCheckBox("AC");
-        jCheckBox[4]=new JCheckBox("Non-AC");
-        label[4].setBounds(20,120,120,30);
-        jCheckBox[3].setBounds(160,120,60,30);
-        jCheckBox[4].setBounds(220,120,60,30);
-        ButtonGroup bg1=new ButtonGroup();
+        label[4] = UIStyle.createLabel("Quality", UIStyle.LIGHT);
+        jCheckBox[3] = UIStyle.createCheckBox("❄️ AC");
+        jCheckBox[4] = UIStyle.createCheckBox("🌀 Non-AC");
+        label[4].setBounds(30, 200, 120, 30);
+        jCheckBox[3].setBounds(160, 200, 80, 30);
+        jCheckBox[4].setBounds(250, 200, 100, 30);
+        ButtonGroup bg1 = new ButtonGroup();
         bg1.add(jCheckBox[3]);
         bg1.add(jCheckBox[4]);
         jCheckBox[3].setActionCommand("AC");
         jCheckBox[3].addActionListener(this);
         jCheckBox[4].setActionCommand("Non-AC");
         jCheckBox[4].addActionListener(this);
-        //action
 
-        button[1]=new JButton("Search");
-        button[1].setBounds(100,200,80,40);
+        button[1] = UIStyle.createPrimaryButton("🔍  SEARCH CABS");
+        button[1].setBounds(125, 280, 200, 50);
         button[1].setActionCommand("Search");
         button[1].addActionListener(this);
-        //action
 
         panel[1].add(label[2]);
         panel[1].add(label[3]);
         panel[1].add(label[4]);
-
-
         panel[1].add(jtf[2]);
-
-
         panel[1].add(jCheckBox[0]);
         panel[1].add(jCheckBox[1]);
         panel[1].add(jCheckBox[2]);
         panel[1].add(jCheckBox[3]);
         panel[1].add(jCheckBox[4]);
-
         panel[1].add(button[1]);
         frame[1].add(panel[1]);
+        frame[1].setVisible(true);
         /*System.out.print("Enter Pick-Up Location: ");
         this.location=sc.nextLine();
         System.out.println("->Press 1 If you want Car.");

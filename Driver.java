@@ -107,28 +107,35 @@ public class Driver implements ActionListener {
 
     }
     public void set(){
-        frame[2]=new JFrame("Registered");
-        frame[2].setSize(320,300);
-        frame[2].setVisible(true);
-        panel[2]=new JPanel(null);
-        label[1]=new JLabel("UserName");
-        label[1].setBounds(20,30,100,30);
-        label[2]=new JLabel("Password");
-        label[2].setBounds(20,80,100,30);
-        jtf[1]=new JTextField();
-        jtf[1].setBounds(150,30,120,30);
+        frame[2] = new JFrame("Driver Registration");
+        frame[2].setSize(400, 400);
+        frame[2].setLocationRelativeTo(null);
+        frame[2].setResizable(false);
+        
+        panel[2] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("📝 SET CREDENTIALS", 400);
+        headerPanel.setBounds(0, 0, 400, 70);
+        panel[2].add(headerPanel);
+        
+        label[1] = UIStyle.createLabel("Username", UIStyle.LIGHT);
+        label[1].setBounds(50, 100, 100, 30);
+        label[2] = UIStyle.createLabel("Password", UIStyle.LIGHT);
+        label[2].setBounds(50, 170, 100, 30);
+        
+        jtf[1] = UIStyle.createTextField();
+        jtf[1].setBounds(50, 130, 300, 35);
         jtf[1].setActionCommand("User");
         jtf[1].addActionListener(this);
 
-
-        jtf[2]=new JTextField();
-        jtf[2].setBounds(150,80,120,30);
+        jtf[2] = UIStyle.createTextField();
+        jtf[2].setBounds(50, 200, 300, 35);
         jtf[2].setActionCommand("Pass");
         jtf[2].addActionListener(this);
 
-
-        button[4]=new JButton("Register");
-        button[4].setBounds(180,150,90,40);
+        button[4] = UIStyle.createSuccessButton("✅  REGISTER");
+        button[4].setBounds(100, 280, 200, 45);
         button[4].setActionCommand("Registered");
         button[4].addActionListener(this);
 
@@ -138,56 +145,81 @@ public class Driver implements ActionListener {
         panel[2].add(jtf[2]);
         panel[2].add(button[4]);
         frame[2].add(panel[2]);
+        frame[2].setVisible(true);
     }
     public void button(){
-        frame[0]=new JFrame("CHOOSE");
-        frame[0].setSize(300,400);
-        frame[0].setVisible(true);
-        panel[0]=new JPanel(null);
-        frame[0].add(panel[0]);
-        button[0]=new JButton("Register");
+        frame[0] = new JFrame("Driver Portal");
+        frame[0].setSize(400, 500);
+        frame[0].setLocationRelativeTo(null);
+        frame[0].setResizable(false);
+        
+        panel[0] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🚗 DRIVER PORTAL", 400);
+        headerPanel.setBounds(0, 0, 400, 80);
+        panel[0].add(headerPanel);
+        
+        // Driver Icon
+        JLabel iconLabel = UIStyle.createIconLabel("👨‍✈️", 50);
+        iconLabel.setBounds(0, 90, 400, 60);
+        panel[0].add(iconLabel);
+        
+        button[0] = UIStyle.createPrimaryButton("📝  REGISTER");
+        button[0].setBounds(100, 180, 200, 50);
         button[0].setActionCommand("Register");
         button[0].addActionListener(this);
-        button[1]=new JButton("Change Status");
+        
+        button[1] = UIStyle.createWarningButton("🔄  CHANGE STATUS");
+        button[1].setBounds(100, 250, 200, 50);
         button[1].setActionCommand("Change");
         button[1].addActionListener(this);
-        button[2]=new JButton("BACK");
+        
+        button[2] = UIStyle.createDangerButton("⬅  BACK");
+        button[2].setBounds(100, 320, 200, 50);
         button[2].addActionListener(this);
         button[2].setActionCommand("BACK");
-        button[0].setBounds(70,30,150,40);
-        button[1].setBounds(70,90,150,40);
-        button[2].setBounds(70,150,150,40);
 
         panel[0].add(button[0]);
         panel[0].add(button[1]);
         panel[0].add(button[2]);
-
+        
+        frame[0].add(panel[0]);
+        frame[0].setVisible(true);
     }
 
     public void register() {
-
-        frame[1] = new JFrame("Register");
-        frame[1].setSize(300, 300);
-        frame[1].setVisible(true);
-        panel[1] = new JPanel(null);
-        frame[1].add(panel[1]);
-        label[0] = new JLabel("Cnic: ");
-        label[0].setBounds(30, 30, 100, 30);
-        jtf[0] = new JTextField();
-        jtf[0].setBounds(150, 30, 120, 30);
+        frame[1] = new JFrame("Driver Registration");
+        frame[1].setSize(400, 350);
+        frame[1].setLocationRelativeTo(null);
+        frame[1].setResizable(false);
+        
+        panel[1] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🔍 VERIFY CNIC", 400);
+        headerPanel.setBounds(0, 0, 400, 70);
+        panel[1].add(headerPanel);
+        
+        label[0] = UIStyle.createLabel("Enter CNIC Number:", UIStyle.LIGHT);
+        label[0].setBounds(50, 100, 150, 30);
+        
+        jtf[0] = UIStyle.createTextField();
+        jtf[0].setBounds(50, 135, 300, 40);
         jtf[0].addActionListener(this);
         jtf[0].setActionCommand("cnic");
 
         panel[1].add(label[0]);
         panel[1].add(jtf[0]);
 
-
-        button[3] = new JButton("Submit");
-        button[3].setBounds(90, 100, 100, 40);
+        button[3] = UIStyle.createPrimaryButton("🔎  VERIFY");
+        button[3].setBounds(100, 210, 200, 45);
         button[3].setActionCommand("Sub");
         button[3].addActionListener(this);
 
         panel[1].add(button[3]);
+        frame[1].add(panel[1]);
+        frame[1].setVisible(true);
     }
     public boolean readCNIC(){
         int p = 0;

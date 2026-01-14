@@ -143,104 +143,122 @@ public class RegisterCustomer implements ActionListener {
     }
 
     public void Choose(){
-        framee[0]=new JFrame("CHOOSE");
-        framee[0].setSize(300,400);
-        panel[0]=new JPanel(null);
-        framee[0].add(panel[0]);
-        button[1]=new JButton("Register");
+        framee[0] = new JFrame("Customer Portal");
+        framee[0].setSize(400, 500);
+        framee[0].setLocationRelativeTo(null);
+        framee[0].setResizable(false);
+        
+        panel[0] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🧑 CUSTOMER PORTAL", 400);
+        headerPanel.setBounds(0, 0, 400, 80);
+        panel[0].add(headerPanel);
+        
+        // Customer Icon
+        JLabel iconLabel = UIStyle.createIconLabel("👤", 50);
+        iconLabel.setBounds(0, 90, 400, 60);
+        panel[0].add(iconLabel);
+        
+        button[1] = UIStyle.createPrimaryButton("📝  REGISTER");
+        button[1].setBounds(100, 180, 200, 50);
         button[1].setActionCommand("Register");
         button[1].addActionListener(this);
 
-        button[2]=new JButton("Booked Cab");
+        button[2] = UIStyle.createSuccessButton("🚕  BOOK CAB");
+        button[2].setBounds(100, 250, 200, 50);
         button[2].setActionCommand("B-Cab");
         button[2].addActionListener(this);
 
-        button[3]=new JButton("BACK");
+        button[3] = UIStyle.createDangerButton("⬅  BACK");
+        button[3].setBounds(100, 320, 200, 50);
         button[3].addActionListener(this);
         button[3].setActionCommand("BACK");
-        button[1].setBounds(70,30,150,40);
-        button[2].setBounds(70,90,150,40);
-        button[3].setBounds(70,150,150,40);
 
         panel[0].add(button[1]);
         panel[0].add(button[2]);
         panel[0].add(button[3]);
 
+        framee[0].add(panel[0]);
         framee[0].setVisible(true);
     }
     public void Cus_info(){
-        framee[1]= new JFrame("Registered Customer");
-        panel[1]=new JPanel(null);
-        framee[1].setSize(500,600);
-        framee[1].setLocation(300,20);
+        framee[1] = new JFrame("Customer Registration");
+        framee[1].setSize(450, 650);
+        framee[1].setLocationRelativeTo(null);
+        framee[1].setResizable(false);
+        
+        panel[1] = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("📋 REGISTRATION", 450);
+        headerPanel.setBounds(0, 0, 450, 70);
+        panel[1].add(headerPanel);
 
-        jl[0]=new JLabel("Name");
-        jl[0].setBounds(20,20,100,30);
-        jl[1]=new JLabel("Age");
-        jl[1].setBounds(20,70,100,30);
-        jl[2]=new JLabel("Gender");
-        jl[2].setBounds(20,120,100,30);
-        jl[3]=new JLabel("Phone Number");
-        jl[3].setBounds(20,170,150,30);
+        jl[0] = UIStyle.createLabel("Name", UIStyle.LIGHT);
+        jl[0].setBounds(30, 85, 100, 30);
+        jl[1] = UIStyle.createLabel("Age", UIStyle.LIGHT);
+        jl[1].setBounds(30, 135, 100, 30);
+        jl[2] = UIStyle.createLabel("Gender", UIStyle.LIGHT);
+        jl[2].setBounds(30, 185, 100, 30);
+        jl[3] = UIStyle.createLabel("Phone Number", UIStyle.LIGHT);
+        jl[3].setBounds(30, 235, 120, 30);
+        jl[4] = UIStyle.createLabel("CNIC", UIStyle.LIGHT);
+        jl[4].setBounds(30, 285, 100, 30);
+        
+        JLabel divider = UIStyle.createLabel("━━━━━━ Set Login Credentials ━━━━━━", UIStyle.ACCENT);
+        divider.setBounds(30, 335, 400, 25);
+        panel[1].add(divider);
+        
+        jl[6] = UIStyle.createLabel("Username", UIStyle.LIGHT);
+        jl[6].setBounds(30, 370, 100, 30);
+        jl[7] = UIStyle.createLabel("Password", UIStyle.LIGHT);
+        jl[7].setBounds(30, 420, 100, 30);
 
-        jl[4]=new JLabel("CNIC");
-        jl[4].setBounds(20,220,100,30);
-
-        jl[5]=new JLabel("...Please Enter UserName and Password...");
-        jl[5].setBounds(50,270,270,30);
-
-        jl[6]=new JLabel("Set UserName");
-        jl[6].setBounds(20,320,100,30);
-
-        jl[7]=new JLabel("Set Password");
-        jl[7].setBounds(20,370,100,30);
-
-        jtf[0]=new JTextField();
-        jtf[0].setBounds(180,20,120,30);
+        jtf[0] = UIStyle.createTextField();
+        jtf[0].setBounds(150, 85, 250, 35);
         jtf[0].addActionListener(this);
         jtf[0].setActionCommand("Name");
-        //action
-        jtf[1]=new JTextField();
-        jtf[1].setBounds(180,70,120,30);
+        
+        jtf[1] = UIStyle.createTextField();
+        jtf[1].setBounds(150, 135, 250, 35);
         jtf[1].setActionCommand("Age");
         jtf[1].addActionListener(this);
-        //action
-        jCheckBox[0]=new JCheckBox("Male");
-        jCheckBox[1]=new JCheckBox("Female");
-        ButtonGroup bg=new ButtonGroup();
+        
+        jCheckBox[0] = UIStyle.createCheckBox("Male");
+        jCheckBox[1] = UIStyle.createCheckBox("Female");
+        ButtonGroup bg = new ButtonGroup();
         bg.add(jCheckBox[0]);
         bg.add(jCheckBox[1]);
-        jCheckBox[0].setBounds(180,120,60,30);
-        jCheckBox[1].setBounds(240,120,70,30);
-
+        jCheckBox[0].setBounds(150, 185, 80, 30);
+        jCheckBox[1].setBounds(240, 185, 90, 30);
         jCheckBox[0].setActionCommand("Male");
         jCheckBox[1].setActionCommand("Female");
         jCheckBox[0].addActionListener(this);
         jCheckBox[1].addActionListener(this);
 
-        jtf[2]=new JTextField();
-        jtf[2].setBounds(180,170,120,30);
+        jtf[2] = UIStyle.createTextField();
+        jtf[2].setBounds(150, 235, 250, 35);
         jtf[2].addActionListener(this);
         jtf[2].setActionCommand("P-No");
-        //action
-        jtf[3]=new JTextField();
-        jtf[3].setBounds(180,220,120,30);
+        
+        jtf[3] = UIStyle.createTextField();
+        jtf[3].setBounds(150, 285, 250, 35);
         jtf[3].addActionListener(this);
         jtf[3].setActionCommand("CNIC");
-        //action
-        jtf[4]=new JTextField();
-        jtf[4].setBounds(180,320,120,30);
+        
+        jtf[4] = UIStyle.createTextField();
+        jtf[4].setBounds(150, 370, 250, 35);
         jtf[4].addActionListener(this);
         jtf[4].setActionCommand("UserName");
-        //action
-        jtf[5]=new JTextField();
-        jtf[5].setBounds(180,370,120,30);
+        
+        jtf[5] = UIStyle.createTextField();
+        jtf[5].setBounds(150, 420, 250, 35);
         jtf[5].setActionCommand("Pass");
         jtf[5].addActionListener(this);
-        //action
 
-        button[0]=new JButton("OK!");
-        button[0].setBounds(200,430,80,40);
+        button[0] = UIStyle.createSuccessButton("✅  REGISTER");
+        button[0].setBounds(125, 480, 200, 45);
         button[0].addActionListener(this);
         button[0].setActionCommand("Submit");
 
@@ -250,7 +268,6 @@ public class RegisterCustomer implements ActionListener {
         panel[1].add(jl[2]);
         panel[1].add(jl[3]);
         panel[1].add(jl[4]);
-        panel[1].add(jl[5]);
         panel[1].add(jl[6]);
         panel[1].add(jl[7]);
 

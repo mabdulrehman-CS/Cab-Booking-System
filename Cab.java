@@ -94,137 +94,162 @@ public class Cab implements ActionListener {
 
    // @Override
     public void button(){
-        framee=new JFrame("CHOOSE");
-        JPanel panel=new JPanel(null);
-        framee.setSize(300,200);
-        framee.setVisible(true);
-        framee.add(panel);
-        JButton jb1=new JButton("Add CAB");
+        framee = new JFrame("Admin Panel");
+        framee.setSize(400, 350);
+        framee.setLocationRelativeTo(null);
+        framee.setResizable(false);
+        
+        JPanel panel = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("⚙️ ADMIN PANEL", 400);
+        headerPanel.setBounds(0, 0, 400, 70);
+        panel.add(headerPanel);
+        
+        // Icon
+        JLabel iconLabel = UIStyle.createIconLabel("🚖", 50);
+        iconLabel.setBounds(0, 80, 400, 60);
+        panel.add(iconLabel);
+        
+        JButton jb1 = UIStyle.createSuccessButton("➕  ADD CAB");
+        jb1.setBounds(100, 160, 200, 50);
         jb1.addActionListener(this);
         jb1.setActionCommand("Add");
-        jb1.setBounds(70,30,120,40);
-        JButton jb2=new JButton("Continue");
-        jb2.setBounds(70,110,120,40);
+        
+        JButton jb2 = UIStyle.createDangerButton("⬅  BACK");
+        jb2.setBounds(100, 230, 200, 50);
         jb2.addActionListener(this);
         jb2.setActionCommand("Back");
+        
         panel.add(jb1);
         panel.add(jb2);
+        framee.add(panel);
+        framee.setVisible(true);
     }
     public void add(){
-        frame=new JFrame("Enter CAB");
-        JPanel panel=new JPanel(null);
-        frame.setSize(500,700);
-        frame.setLocation(300,30);
-        frame.setVisible(true);
-        jl[0]=new JLabel("Company Name");  //text
-        jl[0].setBounds(20,20,120,30);
-        jl[1]=new JLabel("Model");         //text
-        jl[1].setBounds(20,70,120,30);
-        jl[2]=new JLabel("Type");          //check
-        jl[2].setBounds(20,120,120,30);
-        jl[3]=new JLabel("Quality");       //check
-        jl[3].setBounds(20,170,120,30);
-        jl[4]=new JLabel("Seats");         //Combo
-        jl[4].setBounds(20,220,120,30);
-        jl[5]=new JLabel("Location");      //text
-        jl[5].setBounds(20,270,120,30);
-        jl[6]=new JLabel("Price(Per KM)"); //text
-        jl[6].setBounds(20,320,120,30);
-        jl[7]=new JLabel("Driver Name");   //text
-        jl[7].setBounds(20,370,120,30);
-        jl[8]=new JLabel("CNIC");          //text
-        jl[8].setBounds(20,420,120,30);
-        jl[9]=new JLabel("Phone No");     //text
-        jl[9].setBounds(20,470,120,30);
-        jl[10]=new JLabel("Driver Exp");   //combo
-        jl[10].setBounds(20,520,120,30);
+        frame = new JFrame("Add New Cab");
+        frame.setSize(500, 750);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        
+        JPanel panel = UIStyle.createGradientPanel();
+        
+        // Header
+        JPanel headerPanel = UIStyle.createHeaderPanel("🚕 ADD NEW CAB", 500);
+        headerPanel.setBounds(0, 0, 500, 60);
+        panel.add(headerPanel);
+        
+        jl[0] = UIStyle.createLabel("Company Name", UIStyle.LIGHT);
+        jl[0].setBounds(30, 75, 120, 30);
+        jl[1] = UIStyle.createLabel("Model Year", UIStyle.LIGHT);
+        jl[1].setBounds(30, 120, 120, 30);
+        jl[2] = UIStyle.createLabel("Vehicle Type", UIStyle.LIGHT);
+        jl[2].setBounds(30, 165, 120, 30);
+        jl[3] = UIStyle.createLabel("Quality", UIStyle.LIGHT);
+        jl[3].setBounds(30, 210, 120, 30);
+        jl[4] = UIStyle.createLabel("Seats", UIStyle.LIGHT);
+        jl[4].setBounds(30, 255, 120, 30);
+        jl[5] = UIStyle.createLabel("Location", UIStyle.LIGHT);
+        jl[5].setBounds(30, 300, 120, 30);
+        jl[6] = UIStyle.createLabel("Price (Per KM)", UIStyle.LIGHT);
+        jl[6].setBounds(30, 345, 120, 30);
+        
+        // Driver Section Divider
+        JLabel driverDivider = UIStyle.createLabel("━━━━━━━ Driver Details ━━━━━━━", UIStyle.ACCENT);
+        driverDivider.setBounds(30, 390, 440, 25);
+        panel.add(driverDivider);
+        
+        jl[7] = UIStyle.createLabel("Driver Name", UIStyle.LIGHT);
+        jl[7].setBounds(30, 425, 120, 30);
+        jl[8] = UIStyle.createLabel("CNIC", UIStyle.LIGHT);
+        jl[8].setBounds(30, 470, 120, 30);
+        jl[9] = UIStyle.createLabel("Phone No", UIStyle.LIGHT);
+        jl[9].setBounds(30, 515, 120, 30);
+        jl[10] = UIStyle.createLabel("Experience (Years)", UIStyle.LIGHT);
+        jl[10].setBounds(30, 560, 130, 30);
 
-
-        jtf[0]=new JTextField();
-        jtf[0].setBounds(160,20,120,30);
+        jtf[0] = UIStyle.createTextField();
+        jtf[0].setBounds(170, 75, 280, 35);
         jtf[0].addActionListener(this);
         jtf[0].setActionCommand("C_Name");
-        //action
-        jtf[1]=new JTextField();
-        jtf[1].setBounds(160,70,120,30);
+        
+        jtf[1] = UIStyle.createTextField();
+        jtf[1].setBounds(170, 120, 280, 35);
         jtf[1].setActionCommand("Model");
         jtf[1].addActionListener(this);
-        //action
-        jcb[0]=new JCheckBox("Car");
-        jcb[1]=new JCheckBox("Bike");
-        jcb[2]=new JCheckBox("Rickshaw");
-        ButtonGroup bg=new ButtonGroup();
+        
+        jcb[0] = UIStyle.createCheckBox("🚗 Car");
+        jcb[1] = UIStyle.createCheckBox("🏍️ Bike");
+        jcb[2] = UIStyle.createCheckBox("🛺 Rickshaw");
+        ButtonGroup bg = new ButtonGroup();
         bg.add(jcb[0]);
         bg.add(jcb[1]);
         bg.add(jcb[2]);
-        jcb[0].setBounds(160,120,60,30);
-        jcb[1].setBounds(220,120,60,30);
-        jcb[2].setBounds(280,120,100,30);
-
+        jcb[0].setBounds(170, 165, 90, 30);
+        jcb[1].setBounds(265, 165, 90, 30);
+        jcb[2].setBounds(360, 165, 110, 30);
         jcb[0].setActionCommand("Car");
         jcb[1].setActionCommand("Bike");
         jcb[2].setActionCommand("Rickshaw");
         jcb[0].addActionListener(this);
         jcb[1].addActionListener(this);
         jcb[2].addActionListener(this);
-        //action
-        jcb[3]=new JCheckBox("AC");
-        jcb[4]=new JCheckBox("Non-AC");
-        ButtonGroup bg1=new ButtonGroup();
+        
+        jcb[3] = UIStyle.createCheckBox("❄️ AC");
+        jcb[4] = UIStyle.createCheckBox("🌀 Non-AC");
+        ButtonGroup bg1 = new ButtonGroup();
         bg1.add(jcb[3]);
         bg1.add(jcb[4]);
-        jcb[3].setBounds(160,170,60,30);
-        jcb[4].setBounds(220,170,80,30);
-
-
+        jcb[3].setBounds(170, 210, 80, 30);
+        jcb[4].setBounds(260, 210, 100, 30);
         jcb[3].setActionCommand("AC");
         jcb[4].setActionCommand("Non-AC");
         jcb[3].addActionListener(this);
         jcb[4].addActionListener(this);
-        //action
-        String[] seats={"1","2","3","4","5","6","7"};
-        jComboBox[0]=new JComboBox(seats);
-        jComboBox[0].setBounds(160,220,50,30);
-
+        
+        String[] seats = {"1", "2", "3", "4", "5", "6", "7"};
+        jComboBox[0] = new JComboBox(seats);
+        UIStyle.styleComboBox(jComboBox[0]);
+        jComboBox[0].setBounds(170, 255, 80, 35);
         jComboBox[0].setActionCommand("seats");
         jComboBox[0].addActionListener(this);
-        //action
-        jtf[2]=new JTextField();
-        jtf[2].setBounds(160,270,120,30);
+        
+        jtf[2] = UIStyle.createTextField();
+        jtf[2].setBounds(170, 300, 280, 35);
         jtf[2].addActionListener(this);
         jtf[2].setActionCommand("Location");
-        //action
-        jtf[3]=new JTextField();
-        jtf[3].setBounds(160,320,120,30);
+        
+        jtf[3] = UIStyle.createTextField();
+        jtf[3].setBounds(170, 345, 280, 35);
         jtf[3].addActionListener(this);
         jtf[3].setActionCommand("Prize");
-        //action
-        jtf[4]=new JTextField();
-        jtf[4].setBounds(160,370,120,30);
+        
+        jtf[4] = UIStyle.createTextField();
+        jtf[4].setBounds(170, 425, 280, 35);
         jtf[4].addActionListener(this);
         jtf[4].setActionCommand("D_Name");
-        //action
-        jtf[5]=new JTextField();
-        jtf[5].setBounds(160,420,120,30);
+        
+        jtf[5] = UIStyle.createTextField();
+        jtf[5].setBounds(170, 470, 280, 35);
         jtf[5].setActionCommand("Cnic");
         jtf[5].addActionListener(this);
-        //action
-        jtf[6]=new JTextField();
-        jtf[6].setBounds(160,470,120,30);
+        
+        jtf[6] = UIStyle.createTextField();
+        jtf[6].setBounds(170, 515, 280, 35);
         jtf[6].addActionListener(this);
         jtf[6].setActionCommand("D_Ph");
-        //action
-        String[] Exp={"1","2","3","4","5","6","7"};
-        jComboBox[1]=new JComboBox(Exp);
-        jComboBox[1].setBounds(160,520,50,30);
+        
+        String[] Exp = {"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        jComboBox[1] = new JComboBox(Exp);
+        UIStyle.styleComboBox(jComboBox[1]);
+        jComboBox[1].setBounds(170, 560, 80, 35);
         jComboBox[1].setActionCommand("Exp");
         jComboBox[1].addActionListener(this);
 
-        jb[0]=new JButton("OK!");
-        jb[0].setBounds(200,570,80,40);
+        jb[0] = UIStyle.createSuccessButton("✅  ADD CAB");
+        jb[0].setBounds(150, 620, 200, 50);
         jb[0].addActionListener(this);
         jb[0].setActionCommand("Submit");
-
 
         panel.add(jb[0]);
         panel.add(jl[0]);
@@ -238,7 +263,6 @@ public class Cab implements ActionListener {
         panel.add(jl[8]);
         panel.add(jl[9]);
         panel.add(jl[10]);
-
 
         panel.add(jtf[0]);
         panel.add(jtf[1]);
@@ -257,6 +281,7 @@ public class Cab implements ActionListener {
         panel.add(jComboBox[0]);
         panel.add(jComboBox[1]);
         frame.add(panel);
+        frame.setVisible(true);
     }
     @Override
     public void actionPerformed(ActionEvent e) {
